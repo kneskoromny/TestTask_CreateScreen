@@ -16,6 +16,11 @@
 		F74148C82742484C00C4C362 /* TestTask_CreateScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74148C72742484C00C4C362 /* TestTask_CreateScreenTests.swift */; };
 		F74148D22742484C00C4C362 /* TestTask_CreateScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74148D12742484C00C4C362 /* TestTask_CreateScreenUITests.swift */; };
 		F74148D42742484C00C4C362 /* TestTask_CreateScreenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74148D32742484C00C4C362 /* TestTask_CreateScreenUITestsLaunchTests.swift */; };
+		F74148E1274248BE00C4C362 /* Task.strings in Resources */ = {isa = PBXBuildFile; fileRef = F74148E0274248BE00C4C362 /* Task.strings */; };
+		F74148E3274251D000C4C362 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74148E2274251D000C4C362 /* CustomCell.swift */; };
+		F74148E52742520B00C4C362 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74148E42742520B00C4C362 /* CustomView.swift */; };
+		F74148E82742605E00C4C362 /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74148E72742605E00C4C362 /* SnapKit.xcframework */; };
+		F74148E92742605E00C4C362 /* SnapKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F74148E72742605E00C4C362 /* SnapKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F74148EA2742605E00C4C362 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F74148E92742605E00C4C362 /* SnapKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F74148AD2742484A00C4C362 /* TestTask_CreateScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask_CreateScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74148B02742484A00C4C362 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +68,10 @@
 		F74148CD2742484C00C4C362 /* TestTask_CreateScreenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTask_CreateScreenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74148D12742484C00C4C362 /* TestTask_CreateScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask_CreateScreenUITests.swift; sourceTree = "<group>"; };
 		F74148D32742484C00C4C362 /* TestTask_CreateScreenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask_CreateScreenUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F74148E0274248BE00C4C362 /* Task.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Task.strings; sourceTree = "<group>"; };
+		F74148E2274251D000C4C362 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		F74148E42742520B00C4C362 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		F74148E72742605E00C4C362 /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F74148E82742605E00C4C362 /* SnapKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,10 +103,12 @@
 		F74148A42742484A00C4C362 = {
 			isa = PBXGroup;
 			children = (
+				F74148E0274248BE00C4C362 /* Task.strings */,
 				F74148AF2742484A00C4C362 /* TestTask_CreateScreen */,
 				F74148C62742484C00C4C362 /* TestTask_CreateScreenTests */,
 				F74148D02742484C00C4C362 /* TestTask_CreateScreenUITests */,
 				F74148AE2742484A00C4C362 /* Products */,
+				F74148E62742605D00C4C362 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +128,8 @@
 				F74148B02742484A00C4C362 /* AppDelegate.swift */,
 				F74148B22742484A00C4C362 /* SceneDelegate.swift */,
 				F74148B42742484A00C4C362 /* ViewController.swift */,
+				F74148E2274251D000C4C362 /* CustomCell.swift */,
+				F74148E42742520B00C4C362 /* CustomView.swift */,
 				F74148B62742484A00C4C362 /* Main.storyboard */,
 				F74148B92742484C00C4C362 /* Assets.xcassets */,
 				F74148BB2742484C00C4C362 /* LaunchScreen.storyboard */,
@@ -127,6 +155,14 @@
 			path = TestTask_CreateScreenUITests;
 			sourceTree = "<group>";
 		};
+		F74148E62742605D00C4C362 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F74148E72742605E00C4C362 /* SnapKit.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +173,7 @@
 				F74148A92742484A00C4C362 /* Sources */,
 				F74148AA2742484A00C4C362 /* Frameworks */,
 				F74148AB2742484A00C4C362 /* Resources */,
+				F74148EA2742605E00C4C362 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,6 +271,7 @@
 				F74148BD2742484C00C4C362 /* LaunchScreen.storyboard in Resources */,
 				F74148BA2742484C00C4C362 /* Assets.xcassets in Resources */,
 				F74148B82742484A00C4C362 /* Main.storyboard in Resources */,
+				F74148E1274248BE00C4C362 /* Task.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,8 +296,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F74148E52742520B00C4C362 /* CustomView.swift in Sources */,
 				F74148B52742484A00C4C362 /* ViewController.swift in Sources */,
 				F74148B12742484A00C4C362 /* AppDelegate.swift in Sources */,
+				F74148E3274251D000C4C362 /* CustomCell.swift in Sources */,
 				F74148B32742484A00C4C362 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,8 +485,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,7 +498,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -473,8 +515,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,7 +528,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
