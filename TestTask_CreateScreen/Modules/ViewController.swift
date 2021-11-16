@@ -68,6 +68,7 @@ class ViewController: UIViewController {
     // Data
     private var childList: [String] = [] {
         didSet {
+            // TODO: добавить свитч - при изменении кол-ва с 5 до 4 кнопка добавить должна появляться
             if childList.count == 5 {
                 addChildBtn.isHidden = true
             }
@@ -76,7 +77,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+    var number = 1
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -99,15 +100,24 @@ class ViewController: UIViewController {
     
     // MARK: - @objc methods
     @objc func add() {
-        print(#function, "add pressed")
-        childList.append("child")
+        childList.append("child \(number)")
+        number += 1
+        print(#function, "child list count: \(childList.count)")
+        print(childList)
+        tableView.insertRows(at: [[0, 0]], with: .right)
+        //tableView.reloadData()
         tableView.isHidden = false
         clearBtn.isHidden = false
-        tableView.reloadData()
     }
     @objc func clear() {
-        Alert.present(in: self,
-                      title: "OK", message: "Apple")
+        Alert.present(in: self) { [weak self] in
+            
+            self?.childList.removeAll()
+            self?.tableView.reloadData()
+            self?.addChildBtn.isHidden = false
+            self?.nameView.textField.text = nil
+            self?.ageView.textField.text = nil
+        }
     }
     
     // MARK: - Private methods
@@ -189,7 +199,6 @@ extension ViewController: CustomCellDelegate {
             print("delete child \(indexPath)")
             childList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
-            //tableView.reloadData()
             }
     }
     
