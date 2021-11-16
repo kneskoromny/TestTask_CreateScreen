@@ -133,7 +133,7 @@
 				F74148B22742484A00C4C362 /* SceneDelegate.swift */,
 				F74148BE2742484C00C4C362 /* Info.plist */,
 				F74148B92742484C00C4C362 /* Assets.xcassets */,
-				F74148F22743A89100C4C362 /* Controllers */,
+				F74148F22743A89100C4C362 /* Modules */,
 				F74148F02743A86B00C4C362 /* Views */,
 				F74148EF2743A4C900C4C362 /* Extensions */,
 				F74148F12743A87F00C4C362 /* Storyboards */,
@@ -193,12 +193,12 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		F74148F22743A89100C4C362 /* Controllers */ = {
+		F74148F22743A89100C4C362 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				F74148B42742484A00C4C362 /* ViewController.swift */,
 			);
-			path = Controllers;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

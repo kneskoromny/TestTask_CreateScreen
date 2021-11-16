@@ -47,6 +47,9 @@ class ViewController: UIViewController {
     private let addChildBtn: CustomButton = {
         let b = CustomButton()
         b.configureView(with: .add)
+        b.addTarget(self,
+                    action: #selector(add),
+                    for: .touchUpInside)
         return b
     }()
     private let tableView: UITableView = {
@@ -58,6 +61,18 @@ class ViewController: UIViewController {
         b.configureView(with: .clear)
         return b
     }()
+    
+    // Data
+    private var childList: [String] = [] {
+        didSet {
+            if childList.count == 5 {
+                addChildBtn.isHidden = true
+            }
+            if childList.count == 0 {
+                clearBtn.isHidden = true
+            }
+        }
+    }
     
     
     // MARK: - View life cycle
@@ -72,12 +87,20 @@ class ViewController: UIViewController {
         addClearBtn()
         
         tableView.dataSource = self
-        tableView.delegate = self
         
         tableView.register(CustomCell.self, forCellReuseIdentifier: "childCell")
         
         tableView.isHidden = true
         clearBtn.isHidden = true
+    }
+    
+    // MARK: - @objc methods
+    @objc func add() {
+        print(#function, "add pressed")
+        childList.append("child")
+        tableView.isHidden = false
+        clearBtn.isHidden = false
+        tableView.reloadData()
     }
     
     // MARK: - Private methods
@@ -140,20 +163,32 @@ class ViewController: UIViewController {
 // MARK: - Table View Data Source
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        childList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "childCell") as! CustomCell
+        cell.delegate = self
+        
         return cell
     }
     
     
 }
-// MARK: - Table View Delegate
-extension ViewController: UITableViewDelegate {
+// MARK: - Custom Cell Delegate
+extension ViewController: CustomCellDelegate {
+    func deleteRow(cell: UITableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            print("delete child \(indexPath)")
+            childList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+            //tableView.reloadData()
+            }
+    }
+    
     
 }
+
 
 
 

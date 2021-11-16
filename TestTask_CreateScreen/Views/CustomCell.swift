@@ -8,7 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol CustomCellDelegate {
+    func deleteRow(cell: UITableViewCell)
+}
+
 final class CustomCell: UITableViewCell {
+    
+    var delegate: CustomCellDelegate!
     
     // MARK: - UI Elements
     private let vertStackView: UIStackView = {
@@ -29,6 +35,7 @@ final class CustomCell: UITableViewCell {
     private let deleteBtn: CustomButton = {
         let b = CustomButton()
         b.configureView(with: .delete)
+        b.addTarget(self, action: #selector(deleteChild), for: .touchUpInside)
         return b
     }()
     
@@ -43,6 +50,11 @@ final class CustomCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - @objc methods
+    @objc func deleteChild() {
+        delegate.deleteRow(cell: self) 
     }
     
     // MARK: - Private methods
