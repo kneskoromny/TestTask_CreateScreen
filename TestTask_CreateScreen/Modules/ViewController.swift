@@ -59,6 +59,9 @@ class ViewController: UIViewController {
     private let clearBtn: CustomButton = {
         let b = CustomButton()
         b.configureView(with: .clear)
+        b.addTarget(self,
+                    action: #selector(clear),
+                    for: .touchUpInside)
         return b
     }()
     
@@ -101,6 +104,10 @@ class ViewController: UIViewController {
         tableView.isHidden = false
         clearBtn.isHidden = false
         tableView.reloadData()
+    }
+    @objc func clear() {
+        Alert.present(in: self,
+                      title: "OK", message: "Apple")
     }
     
     // MARK: - Private methods
