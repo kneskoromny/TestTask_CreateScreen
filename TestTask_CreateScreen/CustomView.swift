@@ -36,6 +36,7 @@ final class CustomView: UIView {
     private var label: UILabel = {
         let l = UILabel()
         l.text = "Текст"
+        l.textColor = .darkGray
         return l
     }()
     
@@ -56,15 +57,15 @@ final class CustomView: UIView {
     private func configureMainView() {
         backgroundColor = .white
         layer.borderWidth = 2
-        layer.borderColor = UIColor.systemIndigo.cgColor
+        layer.borderColor = UIColor.systemGray.cgColor
         layer.cornerRadius = 10
     }
   
     private func addSubviews() {
         addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(self).offset(20)
-            make.bottom.equalTo(self).offset(-20)
+            make.top.equalTo(self).offset(10)
+            make.bottom.equalTo(self).offset(-10)
             make.left.equalTo(self).offset(20)
             make.right.equalTo(self).offset(-20)
         }

@@ -27,7 +27,6 @@ class ViewController: UIViewController {
         sv.axis = .horizontal
         sv.spacing = 20
         sv.distribution = .fillEqually
-        sv.backgroundColor = .systemBlue
         return sv
     }()
     private let persLabel: UILabel = {
@@ -50,10 +49,9 @@ class ViewController: UIViewController {
         v.text = "Возраст"
         return v
     }()
-    // TODO: кастомный класс для кнопки
-    private let addChildBtn: UIButton = {
-        let b = UIButton()
-        b.backgroundColor = .magenta
+    private let addChildBtn: CustomButton = {
+        let b = CustomButton()
+        b.configureView(with: .add)
         return b
     }()
     private let tableView: UITableView = {
@@ -61,8 +59,11 @@ class ViewController: UIViewController {
         tv.backgroundColor = .systemPink
         return tv
     }()
-    
-    // TODO: добавить кнопку ОЧИСТИТЬ
+    private let clearBtn: CustomButton = {
+        let b = CustomButton()
+        b.configureView(with: .clear)
+        return b
+    }()
     
     
     // MARK: - View life cycle
@@ -70,10 +71,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         addVertSV()
-        addViewsToHorizSV()
         addViewsToVertSV()
+        addViewsToHorizSV()
         
         addTableView()
+        addClearBtn()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -89,7 +91,7 @@ class ViewController: UIViewController {
             make.left.equalTo(view).offset(20)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
             make.right.equalTo(view).offset(-20)
-            make.height.equalTo(view.snp_height).multipliedBy(0.3)
+            make.height.equalTo(view.snp_height).multipliedBy(0.4)
         }
     }
     private func addViewsToVertSV() {
@@ -98,6 +100,13 @@ class ViewController: UIViewController {
         vertStackView.addArrangedSubview(ageView)
         vertStackView.addArrangedSubview(horStackView)
         
+        nameView.snp.makeConstraints { make in
+            make.height.equalTo(vertStackView.snp_height).multipliedBy(0.25)
+        }
+        ageView.snp.makeConstraints { make in
+            make.height.equalTo(vertStackView.snp_height).multipliedBy(0.25)
+        }
+        
         horStackView.snp.makeConstraints { make in
             make.height.lessThanOrEqualTo(nameView.snp_height)
         }
@@ -105,6 +114,10 @@ class ViewController: UIViewController {
     private func addViewsToHorizSV() {
         horStackView.addArrangedSubview(childLabel)
         horStackView.addArrangedSubview(addChildBtn)
+        
+        addChildBtn.snp.makeConstraints { make in
+            make.size.equalTo(nameView).multipliedBy(0.6)
+        }
     }
     private func addTableView() {
         view.addSubview(tableView)
@@ -114,6 +127,15 @@ class ViewController: UIViewController {
             make.top.equalTo(vertStackView.snp_bottom).offset(40)
             make.right.equalTo(view).offset(-20)
             make.height.equalTo(view.snp_height).multipliedBy(0.3)
+        }
+    }
+    private func addClearBtn() {
+        view.addSubview(clearBtn)
+        
+        clearBtn.snp.makeConstraints { make in
+            make.top.equalTo(tableView.snp_bottom).offset(40)
+            make.size.equalTo(nameView).multipliedBy(0.6)
+            make.centerX.equalTo(tableView.snp_centerX)
         }
     }
     

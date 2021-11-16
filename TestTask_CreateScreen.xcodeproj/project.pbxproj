@@ -21,6 +21,7 @@
 		F74148E52742520B00C4C362 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74148E42742520B00C4C362 /* CustomView.swift */; };
 		F74148E82742605E00C4C362 /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74148E72742605E00C4C362 /* SnapKit.xcframework */; };
 		F74148E92742605E00C4C362 /* SnapKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F74148E72742605E00C4C362 /* SnapKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F74148EC2743817400C4C362 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74148EB2743817400C4C362 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		F74148E2274251D000C4C362 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		F74148E42742520B00C4C362 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		F74148E72742605E00C4C362 /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
+		F74148EB2743817400C4C362 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				F74148B42742484A00C4C362 /* ViewController.swift */,
 				F74148E2274251D000C4C362 /* CustomCell.swift */,
 				F74148E42742520B00C4C362 /* CustomView.swift */,
+				F74148EB2743817400C4C362 /* CustomButton.swift */,
 				F74148B62742484A00C4C362 /* Main.storyboard */,
 				F74148B92742484C00C4C362 /* Assets.xcassets */,
 				F74148BB2742484C00C4C362 /* LaunchScreen.storyboard */,
@@ -298,6 +301,7 @@
 			files = (
 				F74148E52742520B00C4C362 /* CustomView.swift in Sources */,
 				F74148B52742484A00C4C362 /* ViewController.swift in Sources */,
+				F74148EC2743817400C4C362 /* CustomButton.swift in Sources */,
 				F74148B12742484A00C4C362 /* AppDelegate.swift in Sources */,
 				F74148E3274251D000C4C362 /* CustomCell.swift in Sources */,
 				F74148B32742484A00C4C362 /* SceneDelegate.swift in Sources */,
