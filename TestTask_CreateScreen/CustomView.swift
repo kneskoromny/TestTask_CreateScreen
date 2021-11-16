@@ -8,30 +8,59 @@
 import UIKit
 import SnapKit
 
-class CustomView: UIView {
+final class CustomView: UIView {
     
+    // MARK: - Public properties
+    public var text = "" {
+        didSet {
+            label.text = text
+        }
+    }
+    
+    // MARK: - Private properties
+    private let stackView: UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .vertical
+        sv.distribution = .fillProportionally
+        return sv
+    }()
+    
+    private let textField: UITextField = {
+        let tf = UITextField()
+        tf.backgroundColor = .white
+        tf.placeholder = "Введите данные"
+        return tf
+        
+    }()
+    
+    private var label: UILabel = {
+        let l = UILabel()
+        l.text = "Текст"
+        return l
+    }()
+    
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureMainView()
+        addSubviews()
     }
-    init(labelText: String) {
-        super.init(frame: .zero)
-        createSubviews(with: labelText)
-    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        configureMainView()
+        addSubviews()
     }
     
-    
-    func createSubviews(with labelText: String) {
+    // MARK: - Private methods
+    private func configureMainView() {
         backgroundColor = .white
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemIndigo.cgColor
         layer.cornerRadius = 10
-        
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        
+    }
+  
+    private func addSubviews() {
         addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.top.equalTo(self).offset(20)
@@ -40,15 +69,7 @@ class CustomView: UIView {
             make.right.equalTo(self).offset(-20)
         }
         
-        let label = UILabel()
-        label.text = labelText
         stackView.addArrangedSubview(label)
-        
-        let textField = UITextField()
-        textField.backgroundColor = .white
-        textField.placeholder = "Введите данные"
         stackView.addArrangedSubview(textField)
     }
-
-
 }

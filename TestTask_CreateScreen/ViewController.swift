@@ -42,12 +42,12 @@ class ViewController: UIViewController {
     }()
     internal let nameView: CustomView = {
         let v = CustomView()
-        v.createSubviews(with: "Имя")
+        v.text = "Имя"
         return v
     }()
     internal let ageView: CustomView = {
         let v = CustomView()
-        v.createSubviews(with: "Возраст")
+        v.text = "Возраст"
         return v
     }()
     // TODO: кастомный класс для кнопки

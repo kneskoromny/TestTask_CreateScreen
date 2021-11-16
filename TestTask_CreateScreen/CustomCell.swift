@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CustomCell: UITableViewCell {
     
@@ -21,15 +22,20 @@ class CustomCell: UITableViewCell {
     }()
     internal let nameView: CustomView = {
         let v = CustomView()
-        v.createSubviews(with: "Имя")
+        v.text = "Имя"
         return v
     }()
     internal let ageView: CustomView = {
         let v = CustomView()
-        v.createSubviews(with: "Возраст")
+        v.text = "Возраст"
         return v
     }()
-    // TODO: добавить кнопку
+    private let deleteBtn: UIButton = {
+        let b = UIButton()
+        b.setTitle("Удалить", for: .normal)
+        b.backgroundColor = .orange
+        return b
+    }()
     
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -37,6 +43,7 @@ class CustomCell: UITableViewCell {
         
         addVertSV()
         addViewsToVertSV()
+        addBtn()
     }
     
     required init?(coder: NSCoder) {
@@ -50,7 +57,6 @@ class CustomCell: UITableViewCell {
         vertStackView.snp.makeConstraints { make in
             make.left.equalTo(contentView).offset(0)
             make.top.equalTo(contentView.snp_top).offset(10)
-            make.right.equalTo(contentView).offset(0)
             make.bottom.equalTo(contentView.snp_bottom).offset(-10)
             make.width.equalTo(contentView.snp_width).multipliedBy(0.5)
         }
@@ -58,6 +64,14 @@ class CustomCell: UITableViewCell {
     private func addViewsToVertSV() {
         vertStackView.addArrangedSubview(nameView)
         vertStackView.addArrangedSubview(ageView)
+    }
+    private func addBtn() {
+        contentView.addSubview(deleteBtn)
+        
+        deleteBtn.snp.makeConstraints { make in
+            make.top.equalTo(contentView).offset(30)
+            make.left.equalTo(vertStackView.snp_right).offset(20)
+        }
     }
     
 
