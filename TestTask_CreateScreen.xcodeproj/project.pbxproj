@@ -22,6 +22,7 @@
 		F74148E82742605E00C4C362 /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74148E72742605E00C4C362 /* SnapKit.xcframework */; };
 		F74148E92742605E00C4C362 /* SnapKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F74148E72742605E00C4C362 /* SnapKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F74148EC2743817400C4C362 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74148EB2743817400C4C362 /* CustomButton.swift */; };
+		F74148EE2743A4C500C4C362 /* Extension + UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74148ED2743A4C500C4C362 /* Extension + UIStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		F74148E42742520B00C4C362 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		F74148E72742605E00C4C362 /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
 		F74148EB2743817400C4C362 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		F74148ED2743A4C500C4C362 /* Extension + UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIStackView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,14 +131,12 @@
 			children = (
 				F74148B02742484A00C4C362 /* AppDelegate.swift */,
 				F74148B22742484A00C4C362 /* SceneDelegate.swift */,
-				F74148B42742484A00C4C362 /* ViewController.swift */,
-				F74148E2274251D000C4C362 /* CustomCell.swift */,
-				F74148E42742520B00C4C362 /* CustomView.swift */,
-				F74148EB2743817400C4C362 /* CustomButton.swift */,
-				F74148B62742484A00C4C362 /* Main.storyboard */,
-				F74148B92742484C00C4C362 /* Assets.xcassets */,
-				F74148BB2742484C00C4C362 /* LaunchScreen.storyboard */,
 				F74148BE2742484C00C4C362 /* Info.plist */,
+				F74148B92742484C00C4C362 /* Assets.xcassets */,
+				F74148F22743A89100C4C362 /* Controllers */,
+				F74148F02743A86B00C4C362 /* Views */,
+				F74148EF2743A4C900C4C362 /* Extensions */,
+				F74148F12743A87F00C4C362 /* Storyboards */,
 			);
 			path = TestTask_CreateScreen;
 			sourceTree = "<group>";
@@ -164,6 +164,41 @@
 				F74148E72742605E00C4C362 /* SnapKit.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F74148EF2743A4C900C4C362 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F74148ED2743A4C500C4C362 /* Extension + UIStackView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F74148F02743A86B00C4C362 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F74148E2274251D000C4C362 /* CustomCell.swift */,
+				F74148E42742520B00C4C362 /* CustomView.swift */,
+				F74148EB2743817400C4C362 /* CustomButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F74148F12743A87F00C4C362 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F74148B62742484A00C4C362 /* Main.storyboard */,
+				F74148BB2742484C00C4C362 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F74148F22743A89100C4C362 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F74148B42742484A00C4C362 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +340,7 @@
 				F74148B12742484A00C4C362 /* AppDelegate.swift in Sources */,
 				F74148E3274251D000C4C362 /* CustomCell.swift in Sources */,
 				F74148B32742484A00C4C362 /* SceneDelegate.swift in Sources */,
+				F74148EE2743A4C500C4C362 /* Extension + UIStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

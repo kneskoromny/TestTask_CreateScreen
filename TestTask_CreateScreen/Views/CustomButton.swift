@@ -11,6 +11,7 @@ import SnapKit
 enum ButtonState {
     case add
     case clear
+    case delete
 }
 
 final class CustomButton: UIButton {
@@ -31,16 +32,16 @@ final class CustomButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        addImage()
         addLabel()
+        addImage()
         
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configure()
-        addImage()
         addLabel()
+        addImage()
         
     }
     
@@ -50,16 +51,17 @@ final class CustomButton: UIButton {
         layer.cornerRadius = 20
         
         backgroundColor = .white
+        label.font = UIFont(name: "Menlo", size: 15)
     }
     
     private func addImage() {
         addSubview(image)
         
         image.snp.makeConstraints { make in
-            make.left.equalTo(self).offset(10)
-            make.top.equalTo(self).offset(10)
-            make.bottom.equalTo(self).offset(-10)
+            make.right.equalTo(label.snp_left).offset(-5)
+            make.centerY.equalTo(label.snp_centerY)
         }
+        
     }
     private func addLabel() {
         addSubview(label)
@@ -83,6 +85,11 @@ extension CustomButton {
             layer.borderColor = UIColor.systemRed.cgColor
             label.text = "Очистить"
             label.textColor = .systemRed
+            image.isHidden = true
+        case .delete:
+            layer.borderWidth = 0
+            label.text = "Удалить"
+            label.textColor = .systemBlue
             image.isHidden = true
         }
     }

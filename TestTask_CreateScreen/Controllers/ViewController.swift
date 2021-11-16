@@ -11,32 +11,27 @@ import SnapKit
 class ViewController: UIViewController {
     
     // MARK: - UI elements
-    // FIXME: убрать настройку в extension
     private let vertStackView: UIStackView = {
         let sv = UIStackView()
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.axis = .vertical
-        sv.spacing = 20
-        sv.distribution = .equalSpacing
-        sv.backgroundColor = .systemGreen
+        sv.configure(with: .vertical)
         return sv
     }()
     private let horStackView: UIStackView = {
         let sv = UIStackView()
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.axis = .horizontal
-        sv.spacing = 20
-        sv.distribution = .fillEqually
+        sv.configure(with: .horizontal)
         return sv
     }()
     private let persLabel: UILabel = {
         let l = UILabel()
         l.text = "Персональные данные"
+        l.font = UIFont(name: "Menlo-Bold", size: 18)
+        
         return l
     }()
     private let childLabel: UILabel = {
         let l = UILabel()
         l.text = "Дети (макс. 5)"
+        l.font = UIFont(name: "Menlo", size: 15)
         return l
     }()
     internal let nameView: CustomView = {
@@ -56,7 +51,6 @@ class ViewController: UIViewController {
     }()
     private let tableView: UITableView = {
         let tv = UITableView()
-        tv.backgroundColor = .systemPink
         return tv
     }()
     private let clearBtn: CustomButton = {
@@ -116,7 +110,7 @@ class ViewController: UIViewController {
         horStackView.addArrangedSubview(addChildBtn)
         
         addChildBtn.snp.makeConstraints { make in
-            make.size.equalTo(nameView).multipliedBy(0.6)
+            make.size.greaterThanOrEqualTo(nameView).multipliedBy(0.6)
         }
     }
     private func addTableView() {

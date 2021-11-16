@@ -8,16 +8,12 @@
 import UIKit
 import SnapKit
 
-class CustomCell: UITableViewCell {
+final class CustomCell: UITableViewCell {
     
     // MARK: - UI Elements
     private let vertStackView: UIStackView = {
         let sv = UIStackView()
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.axis = .vertical
-        sv.spacing = 20
-        sv.distribution = .equalSpacing
-        sv.backgroundColor = .systemGreen
+        sv.configure(with: .vertical)
         return sv
     }()
     internal let nameView: CustomView = {
@@ -30,10 +26,9 @@ class CustomCell: UITableViewCell {
         v.text = "Возраст"
         return v
     }()
-    private let deleteBtn: UIButton = {
-        let b = UIButton()
-        b.setTitle("Удалить", for: .normal)
-        b.backgroundColor = .orange
+    private let deleteBtn: CustomButton = {
+        let b = CustomButton()
+        b.configureView(with: .delete)
         return b
     }()
     
@@ -64,13 +59,21 @@ class CustomCell: UITableViewCell {
     private func addViewsToVertSV() {
         vertStackView.addArrangedSubview(nameView)
         vertStackView.addArrangedSubview(ageView)
+        
+        nameView.snp.makeConstraints { make in
+            make.height.equalTo(vertStackView.snp_height).multipliedBy(0.45)
+        }
+        ageView.snp.makeConstraints { make in
+            make.height.equalTo(vertStackView.snp_height).multipliedBy(0.45)
+        }
     }
     private func addBtn() {
         contentView.addSubview(deleteBtn)
         
         deleteBtn.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(30)
             make.left.equalTo(vertStackView.snp_right).offset(20)
+            make.size.equalTo(nameView).multipliedBy(0.5)
+            make.centerY.equalTo(nameView.snp_centerY)
         }
     }
     

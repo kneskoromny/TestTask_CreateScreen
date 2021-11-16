@@ -29,6 +29,8 @@ final class CustomView: UIView {
         let tf = UITextField()
         tf.backgroundColor = .white
         tf.placeholder = "Введите данные"
+        tf.font = UIFont(name: "Menlo", size: 13)
+        tf.minimumFontSize = 12
         return tf
         
     }()
@@ -36,6 +38,7 @@ final class CustomView: UIView {
     private var label: UILabel = {
         let l = UILabel()
         l.text = "Текст"
+        l.font = UIFont(name: "Menlo", size: 15)
         l.textColor = .darkGray
         return l
     }()
