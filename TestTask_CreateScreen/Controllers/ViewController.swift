@@ -75,6 +75,9 @@ class ViewController: UIViewController {
         tableView.delegate = self
         
         tableView.register(CustomCell.self, forCellReuseIdentifier: "childCell")
+        
+        tableView.isHidden = true
+        clearBtn.isHidden = true
     }
     
     // MARK: - Private methods
