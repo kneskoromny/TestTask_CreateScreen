@@ -11,54 +11,32 @@ import SnapKit
 class ViewController: UIViewController {
     
     // MARK: - UI elements
-    private let vertStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.configure(with: .vertical)
-        return sv
-    }()
-    private let horStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.configure(with: .horizontal)
-        return sv
-    }()
-    private let persLabel: UILabel = {
-        let l = UILabel()
-        l.text = "Персональные данные"
-        l.font = UIFont(name: "Menlo-Bold", size: 18)
-        
-        return l
-    }()
-    private let childLabel: UILabel = {
-        let l = UILabel()
-        l.text = "Дети (макс. 5)"
-        l.font = UIFont(name: "Menlo", size: 15)
-        return l
-    }()
-    internal let nameView: CustomView = {
-        let v = CustomView()
-        v.text = "Имя"
-        return v
-    }()
-    internal let ageView: CustomView = {
-        let v = CustomView()
-        v.text = "Возраст"
-        return v
-    }()
-    private let addChildBtn: CustomButton = {
-        let b = CustomButton()
-        b.configureView(with: .add)
-        return b
-    }()
-    private let tableView: UITableView = {
-        let tv = UITableView()
-        return tv
-    }()
-    private let clearBtn: CustomButton = {
-        let b = CustomButton()
-        b.configureView(with: .clear)
-        return b
-    }()
+    lazy var vertStackView  = makeVertStackView()
+    lazy var horStackView = makeHorizStackView()
+    lazy var persLabel = makePersLabel()
+    lazy var childLabel = makeChildLabel()
+    lazy var nameView = makeNameView()
+    lazy var ageView = makeAgeView()
+    lazy var addBtn = makeAddBtn()
+    lazy var tableView = makeTableView()
+    lazy var clearBtn = makeClearBtn()
     
+    // Data
+    private var childList: [String] = [] {
+        didSet {
+            switch childList.count {
+            case 0:
+                addBtn.isHidden = false
+                clearBtn.isHidden = true
+            case 1...4:
+                addBtn.isHidden = false
+                clearBtn.isHidden = false
+            default:
+                addBtn.isHidden = true
+                clearBtn.isHidden = false
+            }
+        }
+    }
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -72,7 +50,6 @@ class ViewController: UIViewController {
         addClearBtn()
         
         tableView.dataSource = self
-        tableView.delegate = self
         
         tableView.register(CustomCell.self, forCellReuseIdentifier: "childCell")
         
@@ -80,7 +57,23 @@ class ViewController: UIViewController {
         clearBtn.isHidden = true
     }
     
-    // MARK: - Private methods
+    // MARK: - @objc methods
+    @objc func add() {
+        childList.append("child")
+        tableView.insertRows(at: [[0, 0]], with: .right)
+        tableView.isHidden = false
+    }
+    @objc func clear() {
+        Alert.present(in: self) { [weak self] in
+            
+            self?.childList.removeAll()
+            self?.tableView.reloadData()
+            self?.nameView.textField.text = nil
+            self?.ageView.textField.text = nil
+        }
+    }
+    
+    // MARK: - Add UI elements
     private func addVertSV() {
         view.addSubview(vertStackView)
         
@@ -110,9 +103,9 @@ class ViewController: UIViewController {
     }
     private func addViewsToHorizSV() {
         horStackView.addArrangedSubview(childLabel)
-        horStackView.addArrangedSubview(addChildBtn)
+        horStackView.addArrangedSubview(addBtn)
         
-        addChildBtn.snp.makeConstraints { make in
+        addBtn.snp.makeConstraints { make in
             make.size.greaterThanOrEqualTo(nameView).multipliedBy(0.6)
         }
     }
@@ -137,23 +130,32 @@ class ViewController: UIViewController {
     }
     
 }
+
 // MARK: - Table View Data Source
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        childList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "childCell") as! CustomCell
+        cell.delegate = self
+        
         return cell
     }
-    
-    
 }
-// MARK: - Table View Delegate
-extension ViewController: UITableViewDelegate {
-    
+
+// MARK: - Custom Cell Delegate
+extension ViewController: CustomCellDelegate {
+    func deleteRow(cell: UITableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            
+            childList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+        }
+    }
 }
+
 
 
 

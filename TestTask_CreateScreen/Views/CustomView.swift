@@ -25,7 +25,7 @@ final class CustomView: UIView {
         return sv
     }()
     
-    private let textField: UITextField = {
+    public var textField: UITextField = {
         let tf = UITextField()
         tf.backgroundColor = .white
         tf.placeholder = "Введите данные"

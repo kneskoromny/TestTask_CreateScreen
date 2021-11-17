@@ -8,29 +8,19 @@
 import UIKit
 import SnapKit
 
+protocol CustomCellDelegate {
+    func deleteRow(cell: UITableViewCell)
+}
+
 final class CustomCell: UITableViewCell {
     
+    var delegate: CustomCellDelegate!
+    
     // MARK: - UI Elements
-    private let vertStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.configure(with: .vertical)
-        return sv
-    }()
-    internal let nameView: CustomView = {
-        let v = CustomView()
-        v.text = "Имя"
-        return v
-    }()
-    internal let ageView: CustomView = {
-        let v = CustomView()
-        v.text = "Возраст"
-        return v
-    }()
-    private let deleteBtn: CustomButton = {
-        let b = CustomButton()
-        b.configureView(with: .delete)
-        return b
-    }()
+    lazy var vertStackView = makeVertStackView()
+    lazy var nameView = makeNameView()
+    lazy var ageView = makeAgeView()
+    lazy var deleteBtn = makeDeleteBtn()
     
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -43,6 +33,11 @@ final class CustomCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - @objc methods
+    @objc func deleteChild() {
+        delegate.deleteRow(cell: self) 
     }
     
     // MARK: - Private methods
@@ -76,6 +71,4 @@ final class CustomCell: UITableViewCell {
             make.centerY.equalTo(nameView.snp_centerY)
         }
     }
-    
-
 }
